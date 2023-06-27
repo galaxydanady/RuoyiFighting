@@ -170,6 +170,32 @@
                 <version>${ruoyi.version}</version>
             </dependency>
 
+            <!-- 学生模块-->
+            <dependency>
+                <groupId>com.ruoyi</groupId>
+                <artifactId>ruoyi-student</artifactId>
+                <version>${ruoyi.version}</version>
+            </dependency>
+            <!-- 设备信息模块-->
+            <dependency>
+                <groupId>com.ruoyi</groupId>
+                <artifactId>ruoyi-devDevice</artifactId>
+                <version>${ruoyi.version}</version>
+            </dependency>
+            <!-- 车间信息模块-->
+            <dependency>
+                <groupId>com.ruoyi</groupId>
+                <artifactId>ruoyi-carinfo</artifactId>
+                <version>${ruoyi.version}</version>
+            </dependency>
+            <!-- 工序设置模块-->
+            <dependency>
+                <groupId>com.ruoyi</groupId>
+                <artifactId>ruoyi-worksetting</artifactId>
+                <version>${ruoyi.version}</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 
@@ -180,6 +206,10 @@
         <module>ruoyi-quartz</module>
         <module>ruoyi-generator</module>
         <module>ruoyi-common</module>
+        <module>ruoyi-student</module>
+        <module>ruoyi-devDevice</module>
+        <module>ruoyi-carinfo</module>
+        <module>ruoyi-worksetting</module>
     </modules>
     <packaging>pom</packaging>
 

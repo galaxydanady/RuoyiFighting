@@ -61,6 +61,30 @@
             <artifactId>ruoyi-generator</artifactId>
         </dependency>
 
+        <!--学生模块-->
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-student</artifactId>
+        </dependency>
+        <!--设备信息模块-->
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-devDevice</artifactId>
+        </dependency>
+        <!--车间信息模块-->
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-carinfo</artifactId>
+        </dependency>
+        <!--工序设置模块-->
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-worksetting</artifactId>
+        </dependency>
+
+
+
+
     </dependencies>
 
     <build>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.WorkWorksettingMapper">
+    
+    <resultMap type="WorkWorksetting" id="WorkWorksettingResult">
+        <result property="workId"    column="work_id"    />
+        <result property="workTitle"    column="work_title"    />
+        <result property="workDescription"    column="work_description"    />
+        <result property="workStatus"    column="work_status"    />
+        <result property="workTime"    column="work_time"    />
+    </resultMap>
+
+    <sql id="selectWorkWorksettingVo">
+        select work_id, work_title, work_description, work_status, work_time from work_worksetting
+    </sql>
+
+    <select id="selectWorkWorksettingList" parameterType="WorkWorksetting" resultMap="WorkWorksettingResult">
+        <include refid="selectWorkWorksettingVo"/>
+        <where>  
+            <if test="workTitle != null  and workTitle != ''"> and work_title = #{workTitle}</if>
+            <if test="workDescription != null  and workDescription != ''"> and work_description = #{workDescription}</if>
+            <if test="workStatus != null  and workStatus != ''"> and work_status = #{workStatus}</if>
+        </where>
+    </select>
+    
+    <select id="selectWorkWorksettingByWorkId" parameterType="Long" resultMap="WorkWorksettingResult">
+        <include refid="selectWorkWorksettingVo"/>
+        where work_id = #{workId}
+    </select>
+        
+    <insert id="insertWorkWorksetting" parameterType="WorkWorksetting" useGeneratedKeys="true" keyProperty="workId">
+        insert into work_worksetting
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="workTitle != null and workTitle != ''">work_title,</if>
+            <if test="workDescription != null">work_description,</if>
+            <if test="workStatus != null and workStatus != ''">work_status,</if>
+            <if test="workTime != null">work_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="workTitle != null and workTitle != ''">#{workTitle},</if>
+            <if test="workDescription != null">#{workDescription},</if>
+            <if test="workStatus != null and workStatus != ''">#{workStatus},</if>
+            <if test="workTime != null">#{workTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateWorkWorksetting" parameterType="WorkWorksetting">
+        update work_worksetting
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="workTitle != null and workTitle != ''">work_title = #{workTitle},</if>
+            <if test="workDescription != null">work_description = #{workDescription},</if>
+            <if test="workStatus != null and workStatus != ''">work_status = #{workStatus},</if>
+            <if test="workTime != null">work_time = #{workTime},</if>
+        </trim>
+        where work_id = #{workId}
+    </update>
+
+    <delete id="deleteWorkWorksettingByWorkId" parameterType="Long">
+        delete from work_worksetting where work_id = #{workId}
+    </delete>
+
+    <delete id="deleteWorkWorksettingByWorkIds" parameterType="String">
+        delete from work_worksetting where work_id in 
+        <foreach item="workId" collection="array" open="(" separator="," close=")">
+            #{workId}
+        </foreach>
+    </delete>
+</mapper>
